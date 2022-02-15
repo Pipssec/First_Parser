@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
 data = []
 for p in range(1, 6):
@@ -23,3 +24,6 @@ for p in range(1, 6):
         data.append([link, russian_name, original_name, country, film_type, rate])
 
 print(data)
+header = ['link', 'russian_name', 'original_name', 'country', 'film_type', 'rate']
+df = pd.DataFrame(data, columns=header)
+df.to_csv('kinopoisk2_data.csv', sep=';', encoding='utf8')
